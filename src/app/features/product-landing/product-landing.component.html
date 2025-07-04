@@ -1,0 +1,12 @@
+<div class="landing-container">
+    <h2>Select a Product to Customize</h2>
+    <p class="subtitle">Make it yours — add photos, logos, or text to any product</p>
+
+    <div class="product-grid">
+        <div class="product-card" *ngFor="let product of productTypes" [routerLink]="product.route">
+            <img [src]="product.image" [alt]="product.name" />
+            <h3>{{ product.name }}</h3>
+            <p class="description">{{ product.description }}</p>
+        </div>
+    </div>
+</div>

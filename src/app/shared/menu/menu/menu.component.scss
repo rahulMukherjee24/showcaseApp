@@ -1,0 +1,104 @@
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+
+    a,
+    .submenu-label {
+        text-decoration: none;
+        color: #444;
+        font-weight: 500;
+        cursor: pointer;
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .cta {
+        background: #25d366;
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            background: #1da851;
+        }
+    }
+
+    .products-menu {
+        position: relative;
+        width: auto;
+
+        .submenu-label {
+            user-select: none;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 0.5rem 1rem;
+            display: none;
+            flex-direction: column;
+            min-width: 160px;
+            z-index: 10;
+
+            a {
+                padding: 0.25rem 0;
+                white-space: nowrap;
+            }
+        }
+
+        // 🖥️ Hover submenu for desktop
+        &:hover .submenu {
+            display: flex;
+        }
+
+        // 📱 Mobile version
+        @media (max-width: 768px) {
+            width: 100%;
+
+            .submenu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding: 0.25rem 0;
+                display: none; // hidden by default
+                flex-direction: column;
+
+                a {
+                    padding-left: 1.2rem;
+                }
+
+                &.open {
+                    display: flex; // 📱 shown when user taps "Products ▾"
+                }
+            }
+
+            &:hover .submenu {
+                display: none; // disable hover on touch
+            }
+        }
+    }
+
+    // 📱 Full mobile menu wrapper
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 1rem;
+        display: none;
+
+        &.open {
+            display: flex;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+<div class="editor-container">
+  <!-- Tool Controls -->
+  <div class="tools">
+    <label class="tool-item">
+      <span>Upload Image:</span>
+      <input type="file" (change)="onImageUpload($event)" />
+    </label>
+
+    <label class="tool-item">
+      <span>Text:</span>
+      <input type="text" [(ngModel)]="text" (input)="drawCanvas()" placeholder="Enter text here" />
+    </label>
+
+    <label class="tool-item">
+      <span>Font Size:</span>
+      <input type="number" [(ngModel)]="fontSize" (input)="drawCanvas()" min="10" max="100" />
+    </label>
+
+    <label class="tool-item">
+      <span>Text Color:</span>
+      <input type="color" [(ngModel)]="textColor" (input)="drawCanvas()" />
+    </label>
+  </div>
+
+  <!-- Canvas and Summary Section Side by Side -->
+  <div class="editor-content">
+    <div class="canvas-column">
+      <canvas #canvasEl [width]="stageWidth" [height]="stageHeight"></canvas>
+    </div>
+
+    <div class="summary-column">
+      <app-price-summary [productType]="productType" [imageUrl]="canvasPreviewDataUrl" [text]="text"
+        [textColor]="textColor" [fontSize]="fontSize" [quantity]="1">
+      </app-price-summary>
+    </div>
+  </div>
+</div>

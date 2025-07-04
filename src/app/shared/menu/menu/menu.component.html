@@ -1,0 +1,16 @@
+<nav [class.open]="open" class="menu">
+    <!-- Products with Clickable Submenu -->
+    <div class="menu-item products-menu">
+        <span class="submenu-label" (click)="toggleSubmenu()">Products ▾</span>
+        <div class="submenu" [class.open]="isSubmenuOpen">
+            <a routerLink="/products/mugs" (click)="linkClicked.emit()">Mugs</a>
+            <a routerLink="/editor/tshirt" (click)="linkClicked.emit()">T-Shirts</a>
+            <a routerLink="/products/calendars" (click)="linkClicked.emit()">Calendars</a>
+        </div>
+    </div>
+
+    <!-- Other Links -->
+    <a routerLink="/order" (click)="linkClicked.emit()">Order</a>
+    <a routerLink="/contact" (click)="linkClicked.emit()">Contact</a>
+    <a class="cta" href="https://wa.me/91XXXXXXXXXX" target="_blank">WhatsApp Order</a>
+</nav>

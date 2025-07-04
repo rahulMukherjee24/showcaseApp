@@ -1,0 +1,13 @@
+<div class="gallery-wrapper">
+    <h2>Choose a {{ productType | titlecase }} Template</h2>
+
+    <div class="template-grid">
+        <div class="template-card" *ngFor="let t of templates" (click)="openEditor(t.id, t.image)">
+            <img [src]="'/assets/images/' + t.image" alt="{{ t.name }}" />
+            <div class="template-details">
+                <h4>{{ t.name }}</h4>
+                <p>From ₹{{ t.price }}</p>
+            </div>
+        </div>
+    </div>
+</div>

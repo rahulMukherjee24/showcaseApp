@@ -1,0 +1,5 @@
+[
+    { "id": "t1", "name": "Round Neck", "image": "assets/images/collarneck.jpeg", "price": 499 },
+    { "id": "t2", "name": "Collar", "image": "assets/templates/roundneck.jpeg", "price": 599 }
+]
+  

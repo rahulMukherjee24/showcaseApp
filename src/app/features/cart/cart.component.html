@@ -1,0 +1,64 @@
+<div class="cart-container">
+    <h2>Your Cart</h2>
+
+    <div *ngIf="cartItems.length === 0; else showCart">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <ng-template #showCart>
+        <div class="cart-layout">
+            <!-- Left: Cart Items -->
+            <div class="cart-left">
+                <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+                    <canvas class="cart-preview" [attr.id]="'preview-canvas-' + i" width="100" height="120"></canvas>
+
+                    <div class="details">
+                        <p><strong>{{ item.productType }}</strong></p>
+                        <p>Text: {{ item.text }}</p>
+                        <p>Font Size: {{ item.fontSize }}</p>
+                        <p>
+                            Color:
+                            <span [style.color]="item.textColor">{{ item.textColor }}</span>
+                        </p>
+                        <p>Quantity: {{ item.quantity }}</p>
+                        <p>Price: ₹{{ item.quantity * item.price }}</p>
+                    </div>
+                </div>
+
+                <div class="total">
+                    <strong>Total: ₹{{ totalPrice }}</strong>
+                </div>
+
+                <div class="checkout-section">
+                    <button class="checkout-btn" (click)="showPaymentOptions = true">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Payment Options -->
+            <div class="cart-right" *ngIf="showPaymentOptions">
+                <h3>Select a Payment Method</h3>
+
+                <ul class="payment-methods">
+                    <li>
+                        <input type="radio" name="payment" id="cod" value="COD" [(ngModel)]="selectedPaymentMethod" />
+                        <label for="cod">🪙 Cash on Delivery</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="payment" id="upi" value="UPI" [(ngModel)]="selectedPaymentMethod" />
+                        <label for="upi">📱 UPI</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="payment" id="card" value="Card" [(ngModel)]="selectedPaymentMethod" />
+                        <label for="card">💳 Credit/Debit Card</label>
+                    </li>
+                </ul>
+
+                <button class="confirm-btn" [disabled]="!selectedPaymentMethod" (click)="confirmCheckout()">
+                    Confirm & Pay
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

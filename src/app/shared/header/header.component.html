@@ -1,0 +1,44 @@
+<header class="header">
+    <div class="left-section">
+        <a class="logo" routerLink="/">ClassicImpression</a>
+
+        <!-- Desktop menu -->
+        <div class="desktop-menu">
+            <app-menu></app-menu>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="right-section">
+        <ng-container *ngIf="auth.user$ | async as user; else showLogin">
+            <!-- 🛒 Show cart only if user is logged in -->
+            <a class="cart-icon" routerLink="/cart" aria-label="Cart" [class.bounce]="animateCart">
+                🛒
+                <span class="cart-count">{{ cartCount }}</span>
+            </a>
+
+            <img [src]="user.photoURL" class="user-avatar" alt="User" />
+            <span class="user-name">{{ user.displayName }}</span>
+            <button class="logout-btn" (click)="auth.logout()">Logout</button>
+        </ng-container>
+
+        <ng-template #showLogin>
+            <button class="google-btn" (click)="auth.loginWithGoogle()">
+                <img src="https://img.icons8.com/color/24/google-logo.png" />
+                Sign in with Google
+            </button>
+        </ng-template>
+
+        <!-- Hamburger Icon -->
+        <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    </div>
+
+</header>
+
+<!-- Mobile Side Menu -->
+<div class="mobile-menu" [class.open]="isMenuOpen">
+    <button class="close-btn" (click)="closeMenu()">✖</button>
+    <!-- ✅ Fix: Pass [open] and use (linkClicked) to close menu on link click -->
+    <app-menu [open]="isMenuOpen" (linkClicked)="closeMenu()"></app-menu>
+</div>

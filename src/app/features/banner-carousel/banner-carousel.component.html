@@ -1,0 +1,16 @@
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+            <div class="slide" *ngFor="let banner of banners">
+                <img [src]="banner.image" alt="Banner" />
+                <div class="overlay">
+                    <h2>{{ banner.title }}</h2>
+                    <p>{{ banner.subtitle }}</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="arrow prev" (click)="prev()">‹</button>
+        <button class="arrow next" (click)="next()">›</button>
+    </div>
+</div>

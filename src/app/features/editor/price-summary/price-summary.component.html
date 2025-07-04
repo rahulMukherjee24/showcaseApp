@@ -1,0 +1,19 @@
+<div class="price-summary">
+    <h3>Price Summary</h3>
+
+    <div class="summary-row">
+        <label for="quantity">Quantity:</label>
+        <input id="quantity" type="number" [(ngModel)]="quantity" (input)="updateTotal()" min="1" />
+    </div>
+
+    <div class="summary-row">
+        <span>Price per item:</span>
+        <span>{{ pricePerItem | currency }}</span>
+    </div>
+
+    <div class="summary-row total">
+        <span>Total:</span>
+        <span>{{ totalPrice | currency }}</span>
+    </div>
+    <button class="add-to-cart-btn" (click)="addToCart()">Add to Cart</button>
+</div>
