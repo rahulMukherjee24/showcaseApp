@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/classic-impression",
+    "public": "dist/classic-impression/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
